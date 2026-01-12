@@ -1,4 +1,4 @@
-import CountryCard from '../components/CountryCard.js'
+import CountryCard from '../components/CountryCard.jsx';
 
 function Home({countriesData}) {
     return (

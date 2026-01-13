@@ -124,4 +124,89 @@ header a:last-child {
   .country-info p {
     font-size: 14px;
   }
+ .saved-countries-container {
+    padding: 0 16px 48px 16px;
+  }
+
+  .saved-countries-section h2,
+  .profile-section h2 {
+    font-size: 20px;
+  }
+
+
 }
+
+/* Saved Countries Page Styles */
+.saved-countries-container {
+  max-width: 500px;
+  margin: 0;
+  padding: 0 80px 48px 80px;
+}
+
+.saved-countries-section {
+  margin-bottom: 48px;
+}
+
+.saved-countries-section h2 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #111517;
+  margin-bottom: 16px;
+}
+
+.profile-section h2 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #111517;
+  margin-bottom: 24px;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.profile-form input,
+.profile-form textarea {
+  width: 100%;
+  padding: 12px 16px;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile-form input:focus,
+.profile-form textarea:focus {
+  outline: none;
+  border-color: #858585;
+}
+
+.profile-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.profile-form button {
+  width: fit-content;
+  padding: 10px 32px;
+  background-color: #7c6bde;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s;
+}
+
+.profile-form button:hover {
+  background-color: #6857c7;
+}
+
+

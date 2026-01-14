@@ -1,4 +1,3 @@
-import {Link} from 'react-router-dom'
 import CountryCard from '../components/CountryCard.jsx';
 
 function Home({countriesData}) {

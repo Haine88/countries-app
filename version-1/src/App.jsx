@@ -35,7 +35,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home countriesData={countriesData} />} />
         <Route path="saved" element={<SavedCountries />} />
-        <Route path="/country/:name" element={<CountryDetails />} />
+          <Route path="/country-detail/:countryName" element={<CountryDetails countriesData={countriesData} />} />
       </Routes>
     </BrowserRouter>
   );

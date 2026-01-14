@@ -1,5 +1,9 @@
-function CountryCard({country}) {
+import {Link} from 'react-router-dom'
+
+
+function CountryCard({ country }) {
     return (
+        <Link to={`/country-detail/${country.name.common}`}>
         <div className="country-card">
             <img src={country.flags.png} alt={`${country.name.common} flag`} />
             <div className="country-info">
@@ -8,7 +12,8 @@ function CountryCard({country}) {
                 <p>Capital: {country.capital}</p>
                 <p>Region: {country.region}</p>
             </div>
-        </div>
+            </div>
+        </Link>
     )
 }
 export default CountryCard;

@@ -4,27 +4,27 @@ import SavedCountries from './pages/SavedCountries';
 import CountryDetails from './pages/CountryDetails.jsx';
 import localData from '../localData.js'
 import "./App.css";
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
+
 
 function App() {
    // i set it to localData instead of [] so if it fail it still have localdata //
   const [countriesData, setCountriesData] = useState(localData)
 
+  // an async function to get data from an API using async await//
   const getCountriesData = async () => {
     try {
       const res = await fetch('https://restcountries.com/v3.1/all?fields=name,flags,population,borders,capital,region');
       const data = await res.json();
-      console.log(data);
       setCountriesData(data);
     } catch (error) {
       console.log(error)
     }
   };
-
+ // Effect hook // 
   useEffect(() => {
     getCountriesData();
-  }, []);
+  }, []);   // no dependency because we pnly want it to run once // 
 
     return (
     <BrowserRouter>

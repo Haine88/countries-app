@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 
-function SavedCountries() {
+function SavedCountries({countriesData}) {
 
     const [formData, setFormData] = useState({
         fullName: '',
@@ -10,7 +10,7 @@ function SavedCountries() {
         bio: ''
     });
 
-    
+    // it's a handlechange function that keep the existing data while only change one specific value//
     function handleChange(e) {
         setFormData({
             ...formData,

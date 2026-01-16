@@ -34,7 +34,7 @@ function App() {
       </header>
       <Routes>
         <Route path="/" element={<Home countriesData={countriesData} />} />
-        <Route path="saved" element={<SavedCountries />} />
+          <Route path="saved" element={<SavedCountries countriesData={countriesData} />} />
           <Route path="/country-detail/:countryName" element={<CountryDetails countriesData={countriesData} />} />
       </Routes>
     </BrowserRouter>

@@ -15,7 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home countriesData={localData} />} />
         <Route path="saved" element={<SavedCountries />} />
-        <Route path="/country/:name" element={<CountryDetails />} />
+        <Route path="/country" element={<CountryDetails />} />
       </Routes>
     </BrowserRouter>
   );

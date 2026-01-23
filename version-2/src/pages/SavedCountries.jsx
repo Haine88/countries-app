@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import CountryCard from '../components/CountryCard.jsx';
 
 
 function SavedCountries({countriesData}) {
@@ -10,6 +11,10 @@ function SavedCountries({countriesData}) {
         bio: ''
     });
 
+    const [newestUserData, setNewestUserData] = useState(null)
+
+    const [savedCountries, setSavedCountries] = useState([]);
+
     // it's a handlechange function that keep the existing data while only change one specific value//
     function handleChange(e) {
         setFormData({
@@ -18,8 +23,10 @@ function SavedCountries({countriesData}) {
         });
     }
 
-    function handleSubmit() {
-        console.log('Form submitted: ', formData)
+  
+    async function handleSubmit(e) {
+       e.preventDefault();
+       console.log('Form submitted: ', formData)
 
         setFormData({
             fullName: '',
@@ -28,13 +35,63 @@ function SavedCountries({countriesData}) {
             bio: ''
         });
     }
+   
+    const getNewestUserData = async () => {
+        try {
+            const res = await fetch('/api/get-newest-user', {
+                method: "GET",
+            });
+            const data = await res.json();
+            const userData = data[0];
+
+            setNewestUserData({
+                fullName: userData.name,
+                email: userData.email,
+                country: userData.country_name,
+                bio: userData.bio
+            });
+        } catch (error) {
+            console.log('error', error)
+        }
+    };
+
+
+    const getSavedCountries = async () => {
+        try {
+            const res = await fetch('/api/get-all-saved-countries', {
+                method: "GET",
+            });
+            const data = await res.json();
+            setSavedCountries(data);
+        } catch (error) {
+            console.log('error', error)
+        }
+    }; 
+
+    useEffect(() => {
+        getNewestUserData();
+        getSavedCountries();
+    }, []);
+
+
+
+
     return (
         <div className="saved-countries-container"> 
             <section className="saved-countries-section">
                 <h2>My Saved Countries</h2>
+                <div className="saved-countries-list">
+                    {savedCountries.map((savedCountry, index) => {
+                        const fullCountryData = countriesData.find(
+                            country => country.name.common === savedCountry.country_name
+                        );
+                        return <CountryCard key={index} country={fullCountryData} />
+                        })}
+                </div>
             </section>
             
             <section className="profile-section">
+                {newestUserData && <h2>Welcome, {newestUserData.fullName} !</h2>}
                 <h2>My Profile</h2>
                 <div className="profile-form">
                     <input 

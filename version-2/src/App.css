@@ -237,13 +237,28 @@ header a:last-child {
   .country-details-info p {
     font-size: 14px;
   }
-}
+    .saved-countries-list {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
 
+}
+.saved-countries-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 75px;
+  margin-bottom: 48px;
+}
+.saved-countries-list a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
 
 /* Saved Countries Page Styles */
 .saved-countries-container {
-  max-width: 500px;
-  margin: 0;
+  max-width: 1440px;
+  margin: 0 auto;
   padding: 0 80px 48px 80px;
 }
 
@@ -256,6 +271,9 @@ header a:last-child {
   font-weight: 800;
   color: #111517;
   margin-bottom: 16px;
+}
+.profile-section {
+  max-width: 500px;
 }
 
 .profile-section h2 {
@@ -312,5 +330,7 @@ header a:last-child {
 .profile-form button:hover {
   background-color: #6857c7;
 }
+
+
 
 

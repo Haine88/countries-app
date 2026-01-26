@@ -23,10 +23,29 @@ function SavedCountries({countriesData}) {
         });
     }
 
+    const storeUserData = async (data) => {
+        const response = await fetch('api/add-one-user', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: data.fullName,
+                country_name: data.country,
+                email: data.email,
+                bio: data.bio,
+            }),
+        })
+        const result = await response.text();
+        console.log("result", result)
+    }
+
   
     async function handleSubmit(e) {
        e.preventDefault();
-       console.log('Form submitted: ', formData)
+        console.log('Form submitted: ', formData)
+        
+        await storeUserData(formData)
 
         setFormData({
             fullName: '',
@@ -34,6 +53,8 @@ function SavedCountries({countriesData}) {
             country: '',
             bio: ''
         });
+
+        getNewestUserData();
     }
    
     const getNewestUserData = async () => {

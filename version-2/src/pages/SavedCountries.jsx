@@ -22,7 +22,7 @@ function SavedCountries({countriesData}) {
             [e.target.name]: e.target.value
         });
     }
-
+   // save user data to database //
     const storeUserData = async (data) => {
         const response = await fetch('api/add-one-user', {
             method: "POST",
@@ -40,7 +40,7 @@ function SavedCountries({countriesData}) {
         console.log("result", result)
     }
 
-  
+ //  handle form submission 
     async function handleSubmit(e) {
        e.preventDefault();
         console.log('Form submitted: ', formData)
@@ -56,7 +56,7 @@ function SavedCountries({countriesData}) {
 
         getNewestUserData();
     }
-   
+   // get newest user from database 
     const getNewestUserData = async () => {
         try {
             const res = await fetch('/api/get-newest-user', {
@@ -76,7 +76,7 @@ function SavedCountries({countriesData}) {
         }
     };
 
-
+  // get all saved countries from database //
     const getSavedCountries = async () => {
         try {
             const res = await fetch('/api/get-all-saved-countries', {
@@ -88,7 +88,7 @@ function SavedCountries({countriesData}) {
             console.log('error', error)
         }
     }; 
-
+   // load data when page loads 
     useEffect(() => {
         getNewestUserData();
         getSavedCountries();

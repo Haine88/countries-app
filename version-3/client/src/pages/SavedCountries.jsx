@@ -62,8 +62,8 @@ function SavedCountries({countriesData}) {
             const res = await fetch('/api/get-newest-user', {
                 method: "GET",
             });
-            const data = await res.json();
-            const userData = data[0];
+            const userData = await res.json();
+            
 
             setNewestUserData({
                 fullName: userData.name,

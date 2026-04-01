@@ -38,10 +38,10 @@ async function getNewestUser() {
 }
 
 // 3. saveOneCountry(country_name, country_code)
-async function saveOneCountry(country_name, country_code) {
+async function saveOneCountry(country_name) {
   const result = await db.query(
-    "INSERT INTO saved_countries (country_name, country_code) VALUES ($1, $2) RETURNING *",
-    [country_name, country_code]
+    "INSERT INTO saved_countries (country_name) VALUES ($1) RETURNING *",
+    [country_name]
   );
   return result.rows[0];
 }
@@ -53,14 +53,14 @@ async function getAllSavedCountries() {
 }
 
 // 5. updateOneCountryCount(country_code)
-async function updateOneCountryCount(country_code) {
+async function updateOneCountryCount(country_name) {
   const result = await db.query(
-    `INSERT INTO country_counts (country_code, count)
+    `INSERT INTO country_counts (country_name, count)
      VALUES ($1, 1)
-     ON CONFLICT (country_code)
+     ON CONFLICT (country_name)
      DO UPDATE SET count = country_counts.count + 1
      RETURNING *`,
-    [country_code]
+    [country_name]
   );
   return result.rows[0];
 }
@@ -84,8 +84,8 @@ app.get("/get-newest-user", async (req, res) => {
 
 // 3. POST /save-one-country
 app.post("/save-one-country", async (req, res) => {
-  const { country_name, country_code } = req.body;
-  const country = await saveOneCountry(country_name, country_code);
+  const { country_name } = req.body;
+  const country = await saveOneCountry(country_name);
   res.json(country);
 });
 
@@ -97,7 +97,7 @@ app.get("/get-all-saved-countries", async (req, res) => {
 
 // 5. POST /update-one-country-count
 app.post("/update-one-country-count", async (req, res) => {
-  const { country_code } = req.body;
-  const count = await updateOneCountryCount(country_code);
+  const { country_name } = req.body;
+  const count = await updateOneCountryCount(country_name);
   res.json(count);
 });

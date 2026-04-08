@@ -33,7 +33,7 @@ This is what you can do on the app:
 
 - **Languages:** JavaScript (Node.js)
 - **Framework:** Express.js
-- **Deployment:** 
+- **Deployment:** Render 
 
 **Database**
 

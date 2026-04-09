@@ -5,7 +5,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://localhost:3000",
+        target: "https://countries-app-api-haine.onrender.com",
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path.replace(/^\/api/, ""),
@@ -14,3 +14,4 @@ export default defineConfig({
   },
   plugins: [react()],
 });
+
